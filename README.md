@@ -1,460 +1,171 @@
-# Discord Bot Template
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
+[![Pull Requests](https://img.shields.io/badge/Pull%20Requests-Welcome!-brightgreen)](https://github.com/Liammmmmmmm/kuso/pulls)
+
+
+# Kuso
+
+## Description
+
+**Kuso** est un bot Discord en développement qui propose une expérience immersive autour de la génération d'images et de la création de cartes à collectionner. Le bot permet aux utilisateurs de générer des images, de transformer ces images en cartes, de participer à des combats, et bien plus encore. Ce projet vise à offrir une multitude de fonctionnalités interactives et engageantes pour les utilisateurs de Discord.
+
+## Table des Matières
+
+- [Fonctionnalités Principales](#fonctionnalités-principales)
+  - [Génération d'Images et Création de Cartes](#génération-dimages-et-création-de-cartes)
+  - [Système de Votes](#système-de-votes)
+  - [Gestion de la Rareté](#gestion-de-la-rareté)
+  - [Échanges et Marché](#échanges-et-marché)
+  - [Amélioration et Fusion de Cartes](#amélioration-et-fusion-de-cartes)
+  - [Système de Combats](#système-de-combats)
+  - [Monnaie Virtuelle et Casino](#monnaie-virtuelle-et-casino)
+  - [Intégration Interserveur](#intégration-interserveur)
+  - [Système de Recommandation](#système-de-recommandation)
+- [Fonctionnalités Avancées](#fonctionnalités-avancées)
+  - [Quêtes et Missions](#quêtes-et-missions)
+  - [Événements Temporaires](#événements-temporaires)
+  - [Guildes et Teams](#guildes-et-teams)
+  - [Cartes Évolutives](#cartes-évolutives)
+  - [Système de Crafting](#système-de-crafting)
+  - [Histoires et Lore](#histoires-et-lore)
+  - [Mini-Jeux Intégrés](#mini-jeux-intégrés)
+  - [Personnalisation des Profils](#personnalisation-des-profils)
+  - [Système de Parrainage](#système-de-parrainage)
+  - [Leaderboard et Compétitions](#leaderboard-et-compétitions)
+  - [Intégration avec d'autres Bots](#intégration-avec-dautres-bots)
+  - [Notifications et Rappels](#notifications-et-rappels)
+- [Expérience Utilisateur](#expérience-utilisateur)
+  - [Tutoriels et Guides](#tutoriels-et-guides)
+  - [Amélioration de l'Interface](#amélioration-de-linterface)
+  - [Système de Feedback](#système-de-feedback)
+- [Gestion et Maintenance](#gestion-et-maintenance)
+  - [Tableau de Bord Admin](#tableau-de-bord-admin)
+  - [Mises à Jour et Changelog](#mises-à-jour-et-changelog)
+- [Réflexions et Points à Clarifier](#réflexions-et-points-à-clarifier)
+  - [Équilibrage du Système](#équilibrage-du-système)
+  - [Économie du Jeu](#économie-du-jeu)
+  - [Variabilité des Cartes](#variabilité-des-cartes)
+- [Contribuer](#contribuer)
+- [License](#license)
+
+## Fonctionnalités Principales
+
+### Génération d'Images et Création de Cartes
+- Génération d'images pour diverses catégories (personnages, objets, armes, etc.) à partir de prompts.
+- Transformation des images générées en cartes à collectionner avec une limite quotidienne de création.
+- Les cartes sont accessibles sur tous les serveurs où le bot est actif.
+
+### Système de Votes
+- Les utilisateurs peuvent voter (upvote/downvote) sur les images générées.
+- Les votes influencent la rareté des cartes :
+  - Les cartes peuvent évoluer en termes de rareté (commune, rare, épique, légendaire) en fonction du nombre d'upvotes.
+
+### Gestion de la Rareté
+- La rareté des cartes est dynamique, évoluant selon la popularité et le nombre de cartes détenues.
+- Possibilité de destruction de cartes pour obtenir de la monnaie virtuelle ou des points de roll.
 
-This is a template for a Discord bot using discord.js v14.15.3 and MySQL. Feel free to use and customize it for your own needs!
+### Échanges et Marché
+- Système d'échange de cartes entre utilisateurs.
+- Marketplace pour acheter et vendre des cartes.
+- Graphiques d'évolution des prix des cartes.
 
-## Features
+### Amélioration et Fusion de Cartes
+- Fusion de plusieurs exemplaires d'une carte pour en améliorer la puissance ou les statistiques.
+- Cartes améliorables via combats, missions, etc.
 
-- 💬 Slash & message commands: Supports both slash commands and traditional message commands.
-- 🔄 Simple event management: Easy setup and handling of Discord events.
-- 🛠️ Interactive components: Manage buttons, select menus, context menus, modals, and autocomplete effortlessly.
-- 🗨️ Message reactions & mentions: React to messages and handle bot mentions seamlessly.
-- 🌐 Multilingual support: Users can select their preferred language for bot responses.
-- 📜 Auto generated help
-- 🗄️ MySQL integration: Connects with MySQL databases for data storage and management.
-- 🎨 Easy embed creation: Create and customize rich embed messages with ease.
-- 🌐 Webhook management: Register, handle, and send webhooks with simplicity.
+### Système de Combats
+- Utilisation des cartes pour combattre d'autres utilisateurs.
+- Possibilité de miser des cartes lors des combats.
 
-## Setup
+### Monnaie Virtuelle et Casino
+- Introduction d'une monnaie virtuelle.
+- Casino intégré où les utilisateurs peuvent miser des cartes pour obtenir des récompenses.
 
-### Prerequisites
+### Intégration Interserveur
+- Synchronisation des cartes et statistiques sur tous les serveurs où le bot est présent.
+- Classements et récompenses interserveur pour les meilleures cartes et utilisateurs.
 
-- [Node.js](https://nodejs.org/) v16 or higher
-- [npm](https://www.npmjs.com/) (comes with Node.js)
-- A Discord account and a server to add the bot to
-- A MySQL server
+### Système de Recommandation
+- Système de recommandations de cartes populaires ou nouvellement créées en fonction des likes.
 
-### Installation
+## Fonctionnalités Avancées
 
-1. Clone the repository:
+### Quêtes et Missions
+- Missions journalières/hebdomadaires avec des récompenses (cartes spéciales, monnaie, points de roll).
+- Missions spécifiques aux types de cartes.
 
-    ```sh
-    git clone https://github.com/Liammmmmmmm/discord-js-template-v14.git
-    cd discord-js-template-v14
-    ```
+### Événements Temporaires
+- Organisation d'événements spéciaux avec des cartes exclusives.
+- Thèmes saisonniers avec designs de cartes uniques.
 
-2. Install the required dependencies:
+### Guildes et Teams
+- Formation de guildes ou équipes pour des compétitions collectives.
+- Classements et récompenses pour les meilleures guildes.
 
-    ```sh
-    npm install
-    ```
+### Cartes Évolutives
+- Cartes évoluant en fonction de l'utilisation ou des victoires en combat, ajoutant des pouvoirs spéciaux.
 
-### Configuration
+### Système de Crafting
+- Système de crafting pour combiner ou améliorer des cartes.
 
-1. Copy the `.env.example` file to `.env`:
+### Histoires et Lore
+- Descriptions et histoires uniques pour chaque carte, évoluant avec les mises à jour.
 
-    ```sh
-    cp .env.example .env
-    ```
+### Mini-Jeux Intégrés
+- Mini-jeux basés sur les cartes, offrant des récompenses supplémentaires.
 
-2. Open the `.env` file with your preferred text editor and fill in the required fields:
+### Personnalisation des Profils
+- Personnalisation des profils utilisateurs avec avatars, titres, badges, et affichage des cartes rares.
 
-    ```env
-    DISCORD_TOKEN = YOUR_DISCORD_BOT_TOKEN
-    
-    DB_HOST = YOUR_DATABASE_HOST
-    DB_USER = YOUR_DATABASE_USER
-    DB_PASSWORD = YOUR_DATABASE_PASSWORD
-    DB_NAME = YOUR_DATABASE_NAME
-    ```
+### Système de Parrainage
+- Récompenses pour avoir invité d'autres utilisateurs.
 
-### Usage
+### Leaderboard et Compétitions
+- Leaderboards globaux et par serveur.
+- Compétitions mensuelles ou trimestrielles avec des récompenses.
 
-To start the bot, run the following command:
+### Intégration avec d'autres Bots
+- Collaboration avec d'autres bots populaires pour des fonctionnalités croisées.
 
-```sh
-node index.js
-```
+### Notifications et Rappels
+- Notifications pour les nouveaux événements, missions disponibles, ou évolutions de cartes.
 
-## Exemples & Documentation
+## Expérience Utilisateur
 
-### 🛠️ Defaults commands and structure
-```
-commands/
-├─ new_folder/
-│  ├─ changeLang.js
-│  └─ listlangs.js
-├─ utils/
-│  ├─ help.js
-│  ├─ ping.js
-│  ├─ sendwebhook.js
-│  └─ setPrefix.js
-└─ othercommandfolder/
-   ├─ yourcommand.js
-   └─ yoursecondcommand.js
-```
+### Tutoriels et Guides
+- Tutoriels interactifs et documentation détaillée pour les nouveaux utilisateurs.
 
-The folders are category for your commands (detailed in the auto generated help section) and each one contain files with you commands 
+### Amélioration de l'Interface
+- Utilisation d'embeds Discord pour une meilleure présentation.
+- Réactions interactives pour des actions rapides.
 
-#### 📜 Auto generated help
-By default, the help command is auto generated. Folders are category described in the lang file, and take the description of each command. You can change the display of the commands in each lang file, default is :
+### Système de Feedback
+- Possibilité de donner des avis et suggestions.
+- Sondages réguliers pour impliquer la communauté.
 
-__CATEGORY_NAME__: CATEGORY_DESCRIPTION
-- **COMMAND_NAME**: COMMAND_DESCRIPTION
+## Gestion et Maintenance
 
-When the help command is used with an arg (witch is a command or alias name), it show the advanced description of the command (writen in each language file). Aliases list is also given.
+### Tableau de Bord Admin
+- Tableau de bord pour la gestion des cartes, utilisateurs, et événements.
 
-You can choose to not display a command in the help with help parameter to 0 in the command file.
+### Mises à Jour et Changelog
+- Communication régulière sur les mises à jour et nouvelles fonctionnalités.
+- Changelog accessible pour suivre les évolutions.
 
-#### 🌐 List langs
-Just list all of the possibles languages of the bot.
+## Réflexions et Points à Clarifier
 
-#### 🌐 Change lang
-Change the bot language to one of the possible languages of the bot
+### Équilibrage du Système
+- Paramétrage précis pour l'évolution de la rareté des cartes.
 
-#### 🛠️ Ping
-Just ping the bot.
+### Économie du Jeu
+- Système économique équilibré pour la monnaie virtuelle et le marketplace.
 
-#### 🛠️ Change prefix
-Change the bot prefix for the server. Availaible for every user with the Administrator permission
+### Variabilité des Cartes
+- Introduction de mécanismes pour la variation de la rareté des cartes.
 
-#### 🎨 Send Webhook
-Webhook sending example. Detailed in the [webhook managment section section](#-webhook-management-register-handle-and-send-webhooks-with-simplicity)
+## Contribuer
 
+Les contributions sont les bienvenues ! Veuillez consulter le fichier [CONTRIBUTING.md](CONTRIBUTING.md) pour plus d'informations sur la manière de contribuer.
 
+## License
 
-### 💬 Slash & message commands
-
-This bot template supports both slash commands and traditional message commands, allowing you to define and manage commands in a unified manner. You can set up commands that respond to both message-based interactions and slash commands with the same functionality.
-
-#### Example Command
-
-Here's an example of how to set up a command that works with both slash commands and message commands:
-
-```js
-const commandName = "commandname"; // Your command name here
-
-module.exports = {
-    name: commandName,
-    aliases: ["commandnamealias"], // just a list of aliases
-    help: 1, // display or not in the auto generated help
-    message: async (client, message, args) => {
-        // manage here the arguments in the message command
-        const text = new Txt(); // Txt object, more explainaitions in language section
-        await text.init(message.author.id);
-        // check the arg amount and send error message if needed
-        if(validArgAmount(args, 1, text) != 1) return message.reply(validArgAmount(args, 1, text));
-
-        // when everythings good, execute your command with the args
-        executeCMD(client, message, {yourargname: args[0]},text);
-    },
-    slash: new SlashCommandBuilder()
-        .setName(commandName)
-        .setDescription(require("../../langs/texts/" + settings.messages.defaultLang).texts[commandName].description)
-        .addStringOption(option =>
-            option.setName('yourargname')
-                .setDescription(require("../../langs/texts/" + settings.messages.defaultLang).texts[commandName].arg1)
-                .setRequired(true)
-                .setMaxLength(25)    
-        )
-        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
-        async execute(client, interaction) {
-            // manage here the arguments in the slash command
-
-            const text = new Txt();
-            await text.init(interaction.author.id);
-            await executeCMD(client, interaction, {yourargname: interaction.options.getString('yourargname')}, text);
-        },
-}
-
-async function executeCMD(client, message, args, text) {
-    // Command execution...
-    message.reply("example: " + args.yourargname);
-}
-```
-
-#### Breakdown
-
-- **`name`**: The command's unique name.
-- **`aliases`**: Alternative names for the command.
-- **`help`**: Determines if the command appears in auto-generated help (1 = yes, 0 = no).
-- **`message`**: Handles command execution from messages.
-- **`slash`**: Configures the slash command using `SlashCommandBuilder`.
-- **`executeCMD`**: Function where the actual command logic is processed. 
-
-### 🔄 Simple event management: Easy setup and handling of Discord events.
-
-Easily set up and handle Discord events with a straightforward approach.
-
-#### Example Event Handler
-
-Here's an example of how to manage a basic event, such as when the bot is ready:
-
-
-```js
-module.exports = {
-	name: Events.ClientReady,
-	once: true,
-	execute(client) {
-		info(`Ready! Logged in as ${client.user.tag}`);
-	},
-}
-```
-
-#### Breakdown
-
-- **`name`**: Specifies the type of event to handle (e.g., `Events.ClientReady`).
-- **`once`**: Indicates whether the event should only be handled once (`true` = once, `false` = multiple times).
-- **`execute`**: Function that contains the logic to run when the event is triggered. For the `ClientReady` event, it logs a message indicating the bot is online.
-
-
-### 🛠️ Interactive components: Manage buttons, select menus, context menus, modals, and autocomplete effortlessly.
-
-Manage buttons, select menus, context menus, modals, and autocomplete with ease. 
-
-#### Example: Button Interaction
-
-Here's how you can set up a simple button interaction handler:
-
-```js
-module.exports = {
-    customId: 'example-button-id',
-    run: async (client, interaction) => {
-
-        await interaction.reply({
-            content: 'Replied from a Button interaction!',
-            ephemeral: true
-        });
-
-    }
-}
-```
-
-#### Breakdown
-
-- **`customId`**: A unique identifier for the button, used to distinguish different buttons in your bot.
-- **`run`**: The function that executes when the button is clicked. It contains the logic for handling the interaction.
-
-### 🗨️ Message Reactions & Mentions: Seamlessly react to messages and handle bot mentions.
-
-**File Structure:**
-
-```
-messagesReactions/
-├─ messagesReaction.js
-├─ onBotMention.js
-└─ randomMessages.js
-```
-
-#### onBotMention.js
-
-Contains a single function that handles what happens when the bot is mentioned in a message. 
-
-#### randomMessages.js
-
-Contains a switch case to handle different random messages. You can customize it to perform various actions based on the message content.
-
-#### messagesReaction.js
-
-Combines the functionalities of `onBotMention.js` and `randomMessages.js`. You can also add functions from other files if you want to include more functionalities beyond just random messages.
-
-### 🌐 Multilingual support: Users can select their preferred language for bot responses.
-
-This feature allows users to choose their preferred language for bot responses. The bot retrieves and uses language-specific texts based on each user's settings.
-
-**File Structure:**
-
-```
-langs/
-├─ texts/
-│  ├─ en.js
-│  ├─ fr.js
-│  └─ ... (additional language files)
-└─ langs.js
-```
-You can find next to lang an exemple of the user table.
-
-You can add a language just by adding a file `languagename`.js\
-⚠️ if you change a language name or remove one, you can have issues with the database
-
-#### Overview
-
-**`Txt` Class**
-
-The `Txt` class is used to manage user language settings and retrieve localized texts. It provides methods for initializing user language settings, retrieving localized texts, changing the language, and more.
-
-**Key Methods:**
-
-- **`init(userid)`**: Initializes the language setting for a user. It fetches the language from the database and sets it, defaulting to a predefined language if needed.
-
-- **`get(command, text, objects)`**: Retrieves the localized text for a given command and text index. If the text is not found in the user's language, it falls back to the default language. Optionally, you can replace placeholders in the text with values from the `objects`.
-
-- **`changeLanguage(lang)`**: Changes the user's language in the database and updates the current language setting.
-
-- **`getLanguage()`**: Retrieves the current language of the user from the database.
-
-**Example Usage:**
-
-```js
-const { Txt } = require('./langs');
-
-// Initialize Txt instance for a user
-let text = new Txt();
-await text.init('user-id-here');
-
-// Get localized text for a command
-const localizedText = text.get('commandName', 'textIndex', { VARIABLE: 'value' });
-
-// Change user language
-await text.changeLanguage('fr'); // Change to French
-```
-
-
-In this setup:
-- **`langs/texts/`** contains language files for different languages.
-- **`Txt` class** handles language management and localization.
-
-
-### 🗄️ MySQL Integration: Connects with MySQL Databases for Data Storage and Management
-
-This feature provides an easy way to connect to and interact with a MySQL database. It allows for executing SQL queries and managing database connections.
-
-**File: `SQLRequest.js`**
-
-**Key Components:**
-
-- **`DatabaseConnection` Class**: Manages database connections and SQL queries. By default, it uses the database configuration from the `.env` file, but you can configure it to use different databases if needed.
-
-**Class Methods:**
-
-- **`setDB(database, host, user, password)`**: Allows you to change the default database connection settings. This method updates the configuration with the provided database name, host, user, and password.
-
-- **`request(sql, params)`**: Executes a SQL query with the given parameters. It returns a promise that resolves with the result of the query.
-
-**Example Usage:**
-
-**1. Default Database Connection**
-
-```js
-const DatabaseConnection = require('./SQLRequest');
-
-const db = new DatabaseConnection();
-
-db.request("SELECT * FROM users WHERE id = ?", [userId])
-    .then(results => {
-        console.log(results);
-    })
-    .catch(err => {
-        console.error(err);
-    });
-```
-
-**2. Custom Database Connection**
-
-```js
-const DatabaseConnection = require('./path/to/DatabaseConnection');
-
-const db = new DatabaseConnection();
-db.setDB('otherDatabase', 'host', 'user', 'password');
-
-db.request("SELECT * FROM users WHERE id = ?", [userId])
-    .then(results => {
-        console.log(results);
-    })
-    .catch(err => {
-        console.error(err);
-    });
-```
-
-**Class Overview:**
-
-- **`constructor`**: Sets up the connection using environment variables defined in the `.env` file.
-- **`setDB`**: Updates the connection settings for different databases.
-- **`request`**: Performs SQL queries and handles results or errors, providing debugging information for successful and failed requests.
-
-
-This integration simplifies database operations, making it easy to perform queries and manage data within your bot.
-
-### 🎨 Easy Embed Creation: Quickly Create and Customize Rich Messages
-
-The `DefaultEmbed` class makes it simple to create rich embed messages in Discord bots with consistent styling. It builds on the `EmbedBuilder` from Discord.js, letting you set default properties like color, footer, author, and thumbnail with just a few lines of code.
-
-**File: `DefaultEmbeds.js`**
-
-**Key Features:**
-
-- **`DefaultEmbed` Class**: Extends `EmbedBuilder` to easily apply default settings, ensuring a uniform look for your embeds.
-
-**Main Method:**
-
-- **`setDefault(embed, message)`**: Applies default settings (color, footer, author, etc.) based on predefined configurations. It uses dynamic placeholders (e.g., server name, user avatar) that are filled in from the message context.
-
-**Example Usage:**
-
-```js
-const { DefaultEmbed } = require('./DefaultEmbeds');
-
-const embed = new DefaultEmbed()
-    .setDefault('primary', message)
-    .setTitle('Custom Title')
-    .setDescription('Custom Description');
-
-message.channel.send({ embeds: [embed] });
-```
-
-#### Config example
-```js
-const embeds = {
-    primary: {
-        color: "#dbaf00",
-        header: {
-            author: "%SERVER_NAME%",
-            authorImageURL: "%SERVER_IMAGE%",
-            authorURL: "https://exemple.com",
-            thumbnai: "https://c.clc2l.com/t/d/i/discord-4OXyS2.png"
-        },
-        footer: {
-            text: "Secondary exemple",
-            imageURL: "",
-            timestamp: true,
-        }
-    }
-}
-```
-
-
-### 🌐 Webhook Management: Simplified Webhook Registration, Handling, and Sending
-
-The `WebhookMessage` class provides a straightforward way to manage Discord webhooks, allowing for easy registration, handling, and sending of messages through webhooks. This class ensures that webhooks are efficiently reused or created as needed, with the ability to store and retrieve webhook information from a database.
-
-**File: `WebhookMessage.js`**
-
-**Main Methods:**
-
-1. **`init(message)`**: Initializes a webhook for the specified channel. If a webhook already exists, it is reused; otherwise, a new webhook is created and saved in the database.
-   - **Parameters**: `message` - The Discord message object.
-   - **Returns**: `Promise<boolean>` - Resolves to `true` if the webhook was successfully initialized.
-
-   **Example Usage:**
-
-   ```js
-   const result = await webhookMessage.init(message);
-   if (result) {
-       console.log('Webhook initialized successfully.');
-   } else {
-       console.log('Failed to initialize webhook.');
-   }
-   ```
-
-2. **`send(username, icon, content, embed)`**: Sends a message through the initialized webhook.
-   - **Parameters**:
-     - `username` - The name to display as the sender.
-     - `icon` - The avatar URL for the sender.
-     - `content` - The message content.
-     - `embed` (optional) - An array of embeds to include in the message.
-   - **Returns**: `Promise<boolean>` - Resolves to `true` if the message was sent successfully, or rejects with an error.
-
-   **Example Usage:**
-
-   ```js
-   webhookMessage.send('Bot Name', 'https://example.com/avatar.png', 'Hello, world!', [])
-       .then(() => console.log('Message sent successfully.'))
-       .catch(err => console.error('Failed to send message:', err));
-   ```
-
-
-
-
-
-## Inspirations
-
-Structure and commands registration inspired by - [TFAGaming DiscordJS-V14-Bot-Template](https://github.com/TFAGaming/DiscordJS-V14-Bot-Template/tree/main)
+Ce projet est sous licence [GPL-3.0](LICENSE).
