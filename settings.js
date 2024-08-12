@@ -21,8 +21,8 @@ const settings = {
     },
     status: {
         statusMessages: [
-            { name: 'Status 1', type: 3 },
-            { name: 'Status 2', type: 4 },
+            { name: 'Regarde mes waifus', type: 3 },
+            { name: 'Reflechis au sens de la vie', type: 4 },
         ],
         switch_delay: 10000,       
     }

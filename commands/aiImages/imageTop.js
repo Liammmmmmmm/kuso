@@ -27,9 +27,9 @@ module.exports = {
  * @param {object} args 
  */
 async function executeCMD(client, message, args) {
-    let slider = new Slider(message, {DESCRIPTION: "prompt", USERID: "user_id"}, "SELECT * FROM saved_images WHERE nsfw = 0", []);
+    let slider = new Slider(message, {PROMPT: "prompt", UPVOTE: "upvote", DOWNVOTE: "downvote", USERID: "user_id"}, "SELECT si.*, COALESCE(SUM(CASE WHEN v.upvote = 1 THEN 1 ELSE 0 END), 0) AS upvote, COALESCE(SUM(CASE WHEN v.upvote = 0 THEN 1 ELSE 0 END), 0) AS downvote, (COALESCE(SUM(CASE WHEN v.upvote = 1 THEN 1 ELSE 0 END), 0) - COALESCE(SUM(CASE WHEN v.upvote = 0 THEN 1 ELSE 0 END), 0)) AS score FROM saved_images si LEFT JOIN votes v ON si.id = v.image_id WHERE si.nsfw = 0 GROUP BY si.id ORDER BY score DESC", []);
     await slider.init();
-    slider.setPos(1);
+    slider.editCategory("aiImageSlider");
 
     const up = new ButtonBuilder()
 		.setCustomId('up')

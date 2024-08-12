@@ -3,6 +3,12 @@ const { DefaultEmbed } = require("./DefaultEmbeds");
 const { Txt } = require("../langs/langs");
 const { ButtonBuilder, ActionRowBuilder, ButtonStyle } = require("discord.js")
 const { embeds } = require("../settings")
+const { v4: uuidv4 } = require('uuid');
+
+/**
+ * Stocke tous les sliders actifs (un slider reste actif pendant une heure) pour que les boutons puissent interagire avec lui
+ */
+const SliderStore = new Map();
 
 /**
  * Differents sliders types
@@ -22,6 +28,7 @@ class Slider {
      * @param {string[]} params 
      */
     constructor(interaction, variablesFromResult, request, params = []) {
+        this.id = uuidv4(); 
         this.type = SliderType.Static;
         this.interaction = interaction;
         this.resultSQLReplace = {...variablesFromResult, ID: "id"};
@@ -78,6 +85,10 @@ class Slider {
             .catch(() => {return false})
         }
         this.variablesFromResult = { ...this.variablesFromResult, ACTUAL: this.pos + 1, TOTAL: this.total};
+        setTimeout(() => {
+            SliderStore.delete(this.id);
+            this.removeAllButtons();
+        }, 3600000)
         return true;
     }
 
@@ -94,10 +105,15 @@ class Slider {
      * @param {ButtonBuilder[]} buttons 
      */
     addButtons(buttons) {
-        buttons.forEach(button => {
+        this.buttons = [...this.buttons, ...buttons];
+        this.buttons.forEach(button => {
             this.ogId.push(button.data.custom_id);
         })
-        this.buttons = [...this.buttons, ...buttons];
+    }
+
+    removeAllButtons() {
+        if(this.slash == 1) this.interaction.editReply({components: []});
+        else this.interaction.edit({components: []});
     }
 
     /**
@@ -131,7 +147,7 @@ class Slider {
 
             if(this.type == SliderType.Static) {
                 Object.entries(this.resultSQLReplace).forEach(([key, content]) => {
-                    if(this.result[this.pos][content]) this.variablesFromResult[key] = this.result[this.pos][content];
+                    if(this.result[this.pos][content] || this.result[this.pos][content] === 0) this.variablesFromResult[key] = this.result[this.pos][content];
                 })
                 this.variablesFromResult.ACTUAL = this.pos + 1;
                 embed.setImage(this.result[this.pos].image_url);
@@ -163,11 +179,8 @@ class Slider {
                 this.variablesFromResult.CREATOR_NAME = user.globalName;
                 this.variablesFromResult.CREATOR_IMAGE = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
             }
-
             this.buttons.forEach((button, i) => {
-                if(i >= 2) {
-                    button.setCustomId(this.ogId[i - 2] + this.variablesFromResult.ID)
-                }
+                button.setCustomId(this.ogId[i] + this.id)
             })
             const row = new ActionRowBuilder().addComponents(...this.buttons);
 
@@ -185,14 +198,13 @@ class Slider {
                 } else {
                     this.interaction.editReply({components: [row], embeds: [embed]});
                 }
+                SliderStore.set(this.id, this); 
                 try {
                     const changeImage = await this.whaitingforchange.awaitMessageComponent({ time: 180_000 });
-                    if (changeImage.customId === 'next') {
+                    if (changeImage.customId.startsWith("next")) {
                         this.next();
-                    } else if (changeImage.customId === 'bfor') {
+                    } else if (changeImage.customId.startsWith("bfor")) {
                         this.prev();
-                    } else {
-                        this.reload()
                     }
                 } catch (e) {
                     this.buttons.shift();
@@ -209,15 +221,14 @@ class Slider {
                     });
                     this.whaitingforchange = this.interaction;
                 }
+                SliderStore.set(this.id, this); 
                 try {
                     const changeImage = await this.whaitingforchange.awaitMessageComponent({ time: 180_000 });
                                     
-                    if (changeImage.customId === 'next') {
+                    if (changeImage.customId.startsWith("next")) {
                         this.next();
-                    } else if (changeImage.customId === 'bfor') {
+                    } else if (changeImage.customId.startsWith("bfor")) {
                         this.prev();
-                    } else {
-                        this.reload()
                     }
                 } catch (e) {
                     this.buttons.shift();
@@ -252,4 +263,4 @@ class Slider {
 }
 
 
-module.exports = { SliderType, Slider}
+module.exports = { SliderType, Slider, SliderStore}
