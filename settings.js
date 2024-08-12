@@ -1,7 +1,7 @@
 const settings = {
     development: {
-        enabled: false, // If true, the bot will register all application commands to a specific guild (not globally).
-        guildIds: ["Development Guild", "Another dev guild"],
+        enabled: true, // If true, the bot will register all application commands to a specific guild (not globally).
+        guildIds: ["876729531166240808", "450730266479165440"], // 1021633276542193755
         debug: true, // Display or not more info
         logFile: true
     },
@@ -9,10 +9,10 @@ const settings = {
         prefix: "?" // Default prefix of the command messages.
     },
     users: {
-        ownerId: "Your account ID", // The bot owner ID, which is you.
+        ownerId: "516993045724528663", // The bot owner ID, which is you.
     },
     messages: { // Messages when language is unreachable.
-        defaultLang: "en",
+        defaultLang: "fr",
         DATABASE_ERROR: "A database error orccured"
     },
     bot: { // Useless if you don't use webhooks
@@ -33,7 +33,7 @@ const globalEmbedHeader = {
     author: "%SERVER_NAME%",
     authorImageURL: "%SERVER_IMAGE%",
     authorURL: "https://exemple.com",
-    thumbnai: "https://c.clc2l.com/t/d/i/discord-4OXyS2.png"
+    thumbnail: ""
 }
 
 const globalEmbedFooter = {
@@ -48,14 +48,15 @@ const embeds = {
         header: globalEmbedHeader,
         footer: globalEmbedFooter,
     },
-    secondary: {
+    slider: {
         color: "#00b3db",
-        header: globalEmbedHeader,
         footer: {
-            text: "Secondary exemple",
-            imageURL: "",
             timestamp: true,
         },
+        buttons: {
+            previous: "859729184770097173",
+            next: "859729121398751232",
+        }
     },
 }
 

@@ -9,6 +9,13 @@ const texts = {
         lang: "Utility commands for bot language.",
         utils: "Random utility commands.",
     },
+    slider: {
+        nothing: "Nothing to see here...",
+        footer: "Image %ACTUAL%/%TOTAL%",
+        description: "Ex : %DESCRIPTION%",
+        author: "%CREATOR_NAME%",
+        authorImageURL: "%CREATOR_IMAGE%",
+    },
     // List of the commands and the texts associated with them
     ping: { 
         description: "A command that gives you the bot's ping.", // max 100 characters, slash commands limit 
@@ -49,6 +56,10 @@ const texts = {
         noPermission: "Not enough permission.",
         success: "Webhook successfully created.",
         error: "An error occurred.",
+    },
+    test: { 
+        description: "Just test random stuff",
+        advancedDesc: "Just test random stuff",
     },
 };
 

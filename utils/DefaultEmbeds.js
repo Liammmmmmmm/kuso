@@ -62,6 +62,7 @@ class DefaultEmbed extends EmbedBuilder {
 
         if (embeds[embed].color) this.setColor('#dbaf00');
         if (embeds[embed].footer) {
+
             this.setFooter({
                 text: replaceVariables(embeds[embed].footer.text, variables),
                 iconURL: replaceVariables(embeds[embed].footer.imageURL, variables)
@@ -74,8 +75,8 @@ class DefaultEmbed extends EmbedBuilder {
                 iconURL: replaceVariables(embeds[embed].header.authorImageURL, variables),
                 url: replaceVariables(embeds[embed].header.authorURL, variables)
             });
-            if (embeds[embed].footer.thumbnail) {
-                this.setThumbnail(replaceVariables(embeds[embed].footer.thumbnail, variables));
+            if (embeds[embed].header.thumbnail) {
+                this.setThumbnail(replaceVariables(embeds[embed].header.thumbnail, variables));
             }
         }
 

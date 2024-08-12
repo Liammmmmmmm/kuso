@@ -145,6 +145,8 @@ function addUserDefaultLang(userid) {
 }
 
 function replaceVariables(text, objects) {
+    if(!text) return null;
+    if(text == "") return null;
     Object.entries(objects).forEach(([key, content]) => {
         text = text.replaceAll(`%${key}%`, content);
     })

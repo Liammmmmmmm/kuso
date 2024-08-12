@@ -9,6 +9,13 @@ const texts = {
         lang: "Commandes utilitaires pour la langue du bot.",
         utils: "Commandes utilitaires aléatoires.",
     },
+    slider: {
+        nothing: "Rien à voir ici...",
+        footer: "Image %ACTUAL%/%TOTAL%",
+        sliderDescription: "%DESCRIPTION%",
+        author: "%USER_NAME%",
+        authorImageURL: "%USER_IMAGE%",
+    },
     // Liste des commandes et des textes qui leur sont associés
     ping: { 
         description: "Une commande qui vous donne le ping du bot.", // max 100 caractères, limite des commandes slash 
@@ -50,6 +57,24 @@ const texts = {
         success: "Webhook créé avec succès.",
         error: "Une erreur s'est produite.",
     },
+    test: { 
+        description: "Juste tester des trucs random",
+        advancedDesc: "Juste tester des trucs random",
+    },
+    aiImageSlider: {
+        nothing: "Rien à voir ici...",
+        footer: "Image %ACTUAL%/%TOTAL%",
+        sliderDescription: "**__Prompt__ :** %PROMPT%\n> UpVotes : %UPVOTE%\n> DownVote : %DOWNVOTE%",
+        author: "%CREATOR_NAME%",
+        authorImageURL: "%CREATOR_IMAGE%",
+        voteUpSuccess: "Vous avez voté positivement pour cette image <:up:1255779640111267912>",
+        voteUpAlready: "Vous avez déjà voté positivement pour cette image <:up:1255779640111267912>",
+        voteDownSuccess: "Vous avez voté négativement pour cette image <:down:1255781883606732821>",
+        voteDownAlready: "Vous avez déjà voté négativement pour cette image <:down:1255781883606732821>",
+    },
+    imagetop: {
+        description: "Affiche "
+    }
 };
 
 module.exports = { texts };

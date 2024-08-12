@@ -21,7 +21,8 @@ class InteractionsListener {
             try {
                 // Handle button interactions
                 if (interaction.isButton()) {
-                    const component = client.collection.components.buttons.get(interaction.customId);
+                    // Check if any component's customId starts with the interaction's customId
+                    const component = client.collection.components.buttons.find((comp, key) => interaction.customId.startsWith(key));
                     if (!component) return;
                     try {
                         component.run(client, interaction);
@@ -30,10 +31,10 @@ class InteractionsListener {
                     }
                     return;
                 }
-
+        
                 // Handle select menu interactions
                 if (interaction.isAnySelectMenu()) {
-                    const component = client.collection.components.selects.get(interaction.customId);
+                    const component = client.collection.components.selects.find((comp, key) => interaction.customId.startsWith(key));
                     if (!component) return;
                     try {
                         component.run(client, interaction);
@@ -42,10 +43,10 @@ class InteractionsListener {
                     }
                     return;
                 }
-
+        
                 // Handle modal submissions
                 if (interaction.isModalSubmit()) {
-                    const component = client.collection.components.modals.get(interaction.customId);
+                    const component = client.collection.components.modals.find((comp, key) => interaction.customId.startsWith(key));
                     if (!component) return;
                     try {
                         component.run(client, interaction);
@@ -54,10 +55,10 @@ class InteractionsListener {
                     }
                     return;
                 }
-
+        
                 // Handle user context menu commands
                 if (interaction.isUserContextMenuCommand()) {
-                    const component = client.collection.components.context.get("user-" + interaction.commandName);
+                    const component = client.collection.components.context.find((comp, key) => interaction.commandName.startsWith("user-" + key));
                     if (!component) return;
                     try {
                         component.run(client, interaction);
@@ -66,10 +67,10 @@ class InteractionsListener {
                     }
                     return;
                 }
-
+        
                 // Handle message context menu commands
                 if (interaction.isMessageContextMenuCommand()) {
-                    const component = client.collection.components.context.get("mess-" + interaction.commandName);
+                    const component = client.collection.components.context.find((comp, key) => interaction.commandName.startsWith("mess-" + key));
                     if (!component) return;
                     try {
                         component.run(client, interaction);
@@ -78,10 +79,10 @@ class InteractionsListener {
                     }
                     return;
                 }
-
+        
                 // Handle autocomplete interactions
                 if (interaction.isAutocomplete()) {
-                    const component = client.collection.components.autocomplete.get(interaction.commandName);
+                    const component = client.collection.components.autocomplete.find((comp, key) => interaction.commandName.startsWith(key));
                     if (!component) return;
                     try {
                         component.run(client, interaction);
@@ -94,6 +95,7 @@ class InteractionsListener {
                 error(err);
             }
         });
+        
     }
 }
 

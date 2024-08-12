@@ -74,7 +74,7 @@ async function executeCMD(client, message, args, text) {
                 cat_desc = text.get(commandName, "categoryformat", {CATEGORY_NAME: key, CATEGORY_DESCRIPTION: cat_desc});
                 content.forEach(el => {
                     if(taille == 0) texts[tour] = "";
-                    texts[tour] += text.get(commandName, "commandformat", {PREFIX: client.serverPrefix.find(element => element.server_id == message.guild.id).prefix, COMMAND_NAME: el, COMMAND_DESCRIPTION: text.get(el, "description")}) + "\n";
+                    texts[tour] += text.get(commandName, "commandformat", {PREFIX: client.serverPrefix.find(element => element.server_id == message.guild.id)?.prefix | settings.commands.prefix, COMMAND_NAME: el, COMMAND_DESCRIPTION: text.get(el, "description")}) + "\n";
                     taille = texts[tour].length;
                     if(taille + 100 > 1024) {
                         taille = 0;
