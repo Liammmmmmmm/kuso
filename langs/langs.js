@@ -2,6 +2,7 @@ const fs = require("fs");
 const { settings } = require("../settings")
 const DatabaseConnection = require("../utils/SQLRequest")
 const { warn, error, info, success, debug } = require("../utils/Console");
+const { initUser } = require("../utils/databaseColumnInit");
 
 const languages = fs.readdirSync('./langs/texts').filter(file => file.endsWith('.js')).map(file => file.replace(".js", ""));
 
@@ -53,7 +54,7 @@ class Txt {
                     }
                 } else {
                     debug.info(`User ${userid} isn't registered yet. Selecting default lang ${settings.messages.defaultLang}`);
-                    addUserDefaultLang(userid);
+                    initUser(userid);
                     this.lang = settings.messages.defaultLang;
                     resp = 1;
                 }
@@ -126,22 +127,6 @@ class Txt {
         })
         return lang;
     }
-}
-
-/**
- * Registers a user with the default language in the database.
- * 
- * @param {string} userid - The Discord ID of the user.
- */
-function addUserDefaultLang(userid) {
-    let db = new DatabaseConnection();
-    db.request("INSERT INTO users(discord_id, lang) VALUES (?, ?)", [userid, settings.messages.defaultLang])
-    .then(res => {
-        debug.success(`User ${userid} succefully registered in database with lang : ${settings.messages.defaultLang}`);
-    })
-    .catch(err => {
-        debug.warn(`An error occured while registering user ${userid} in database. Selecting default lang ${settings.messages.defaultLang}`);
-    })
 }
 
 function replaceVariables(text, objects) {

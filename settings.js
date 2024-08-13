@@ -25,6 +25,12 @@ const settings = {
             { name: 'Reflechis au sens de la vie', type: 4 },
         ],
         switch_delay: 10000,       
+    },
+    game: {
+        money: {
+            symbol: "$",
+            base: 500,
+        },
     }
 }
 
