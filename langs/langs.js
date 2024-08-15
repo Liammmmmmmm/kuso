@@ -2,7 +2,7 @@ const fs = require("fs");
 const { settings } = require("../settings")
 const DatabaseConnection = require("../utils/SQLRequest")
 const { warn, error, info, success, debug } = require("../utils/Console");
-const { initUser } = require("../utils/databaseColumnInit");
+const { initUser } = require("../utils/databaseRowInit");
 
 const languages = fs.readdirSync('./langs/texts').filter(file => file.endsWith('.js')).map(file => file.replace(".js", ""));
 
